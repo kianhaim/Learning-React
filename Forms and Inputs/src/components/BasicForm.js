@@ -42,10 +42,11 @@ const BasicForm = props => {
 
   const formSubmissionHandler = event => {
     event.preventDefault();
-    if (!enteredNameIsValid) {
+    if (!formIsValid) {
       return;
     }
 
+    console.log("Sumbitted!!!");
     console.log(enteredName, enteredLast, enteredEmail);
     resetNameInput();
     resetLastNameInput();
@@ -78,7 +79,7 @@ const BasicForm = props => {
             value={enteredName}
           />
           {namedInputHasError && (
-            <p className={"error-text"}>Name must not be empty!</p>
+            <p className={"error-text"}>Please Enter First Name.</p>
           )}
         </div>
         <div className={lastInputClasses}>
@@ -92,7 +93,7 @@ const BasicForm = props => {
             value={enteredLast}
           />
           {lastNamedInputHasError && (
-            <p className={"error-text"}>Last Name must not be empty!</p>
+            <p className={"error-text"}>Please Enter Last Name</p>
           )}
         </div>
       </div>
@@ -107,7 +108,7 @@ const BasicForm = props => {
           value={enteredEmail}
         />
         {emailInputHasError && (
-          <p className={"error-text"}>Please enter valid email!</p>
+          <p className={"error-text"}>Please enter valid email.</p>
         )}
       </div>
       <div className='form-actions'>
