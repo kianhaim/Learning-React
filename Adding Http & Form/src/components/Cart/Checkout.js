@@ -45,6 +45,7 @@ const Checkout = props => {
     if (!formIsValid) {
       return;
     }
+    console.log(enteredCity);
     //Sumit Cart Valid
   };
 
