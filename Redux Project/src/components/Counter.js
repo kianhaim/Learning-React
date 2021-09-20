@@ -1,4 +1,4 @@
-import classes from './Counter.module.css';
+import classes from "./Counter.module.css";
 
 const Counter = () => {
   const toggleCounterHandler = () => {};
@@ -11,5 +11,5 @@ const Counter = () => {
     </main>
   );
 };
-
+console.log("Reak");
 export default Counter;
