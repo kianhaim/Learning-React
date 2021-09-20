@@ -11,5 +11,5 @@ const Counter = () => {
     </main>
   );
 };
-console.log("Reak");
+
 export default Counter;
