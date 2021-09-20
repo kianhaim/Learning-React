@@ -9,7 +9,7 @@ const Checkout = props => {
     name: true,
     street: true,
     city: true,
-    postaCode: true,
+    postalCode: true,
   });
 
   const nameInputRef = useRef();
@@ -47,10 +47,17 @@ const Checkout = props => {
     }
     console.log(enteredCity);
     //Sumit Cart Valid
+
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      postalCode: enteredPostalCode,
+      city: enteredCity,
+    });
   };
 
   const nameControlClasses = `${classes.control} ${
-    formInputsValidity.postalCode ? "" : classes.invalid
+    formInputsValidity.name ? "" : classes.invalid
   }`;
 
   const streetControlClasses = `${classes.control} ${
@@ -70,24 +77,24 @@ const Checkout = props => {
       <div className={nameControlClasses}>
         <label htmlFor='name'>Your Name</label>
         <input type='text' id='name' ref={nameInputRef} />
-        {formInputsValidity.name && <p>Please Enter a Valid Name</p>}
+        {!formInputsValidity.name && <p>Please Enter a Valid Name</p>}
       </div>
       <div className={streetControlClasses}>
         <label htmlFor='street'>Street</label>
         <input type='text' id='street' ref={streetInputRef} />
-        {formInputsValidity.street && <p>Please Enter a Valid Street</p>}
+        {!formInputsValidity.street && <p>Please Enter a Valid Street</p>}
       </div>
       <div className={postalCodeControlClasses}>
         <label htmlFor='postal'>Postal Code</label>
         <input type='text' id='postal' ref={postalCodeInputRef} />
-        {formInputsValidity.postalCode && (
+        {!formInputsValidity.postalCode && (
           <p>Please Enter a Valid Postal Code</p>
         )}
       </div>
       <div className={cityControlClasses}>
         <label htmlFor='city'>City</label>
         <input type='text' id='city' ref={cityInputRef} />
-        {formInputsValidity.city && <p>Please Enter a Valid City</p>}
+        {!formInputsValidity.city && <p>Please Enter a Valid City</p>}
       </div>
       <div className={classes.actions}>
         <button type='button' onClick={props.onCancel}>
