@@ -1,26 +1,7 @@
 //import { createStore } from "redux";
-import { createSlice, configureStore } from "@reduxjs/toolkit";
-
-const initialState = { counter: 0, showCounter: true };
-// Redux toolkit
-const counterSlice = createSlice({
-  name: "counter",
-  initialState,
-  reducers: {
-    increment(state) {
-      state.counter++;
-    },
-    decrement(state) {
-      state.counter--;
-    },
-    incease(state, action) {
-      state.counter = state.counter + action.payload;
-    },
-    toggleCounter(state) {
-      state.showCounter = !state.showCounter;
-    },
-  },
-});
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./counter";
+import authReducer from "./auth";
 
 // With normal Redux
 
@@ -58,10 +39,10 @@ const counterSlice = createSlice({
 // const store = createStore(counterReducer);
 
 const store = configureStore({
-  reducer: counterSlice.reducer,
-  // if we have more reducer we map thru the reducer
-  //counter: counterSlice.reducer,
+  reducer: {
+    counter: counterReducer,
+    auth: authReducer,
+  },
 });
 
-export const counterActions = counterSlice.actions;
 export default store;
