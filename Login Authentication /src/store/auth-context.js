@@ -40,6 +40,7 @@ export const AuthContextProvider = props => {
   const tokenData = retrieveStoredToken();
 
   let initialToken;
+
   if (tokenData) {
     initialToken = tokenData.token;
   }
