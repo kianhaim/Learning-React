@@ -6,6 +6,7 @@ import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import AuthContext from "./store/auth-context";
 
+console.log(this);
 function App() {
   const authCtx = useContext(AuthContext);
   return (
