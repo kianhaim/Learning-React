@@ -26,6 +26,17 @@ function HomePage(props) {
   return <MeetupList meetups={props.meetups} />;
 }
 
+// // SSR if you have data that revalidate frequently
+// export async function getServerSideProps(context) {
+//   const req = context.req;
+//   const res = context.res;
+//   // fetch data from an API
+//   return {
+//     props: { meetups: DUMMY_MEETUPS },
+//   };
+// }
+
+//Get Static Props if you dont need the site refreshed or validated all the time
 export async function getStaticProps() {
   // fetch data from an API
 
@@ -33,6 +44,7 @@ export async function getStaticProps() {
     props: {
       meetups: DUMMY_MEETUPS,
     },
+    revalidate: 10,
   };
 }
 
