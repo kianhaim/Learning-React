@@ -1,4 +1,5 @@
-import Layout from "../components/layout/Layout";
+import { MongoClient } from "mongodb";
+//import Layout from "../components/layout/Layout";
 import MeetupList from "../components/meetups/MeetupList";
 
 // domain.com/
@@ -40,9 +41,24 @@ function HomePage(props) {
 export async function getStaticProps() {
   // fetch data from an API
 
+  const client = await MongoClient.connect(
+    "mongodb+srv://admin1:3516710@cluster0.q8ntd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+
+  const meetupsCollection = db.collection("meetups");
+
+  const meetups = await meetupsCollection.find().toArray();
+  client.close();
+
   return {
     props: {
-      meetups: DUMMY_MEETUPS,
+      meetups: meetups.map(meetup => ({
+        title: meetup.title,
+        address: meetup.address,
+        image: meetup.image,
+        id: meetup._id.toString(),
+      })),
     },
     revalidate: 10,
   };
