@@ -1,19 +1,14 @@
-import { useState } from "react";
 import NewTodo from "./components/NewTodo";
 import Todos from "./components/Todos";
-import Todo from "./models/todo";
+import TodosContextProvider from "./store/todo-context";
 //import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-
-  const addTodoHandler = (todoText: string) => {};
-
   return (
-    <div>
-      <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={todos} />
-    </div>
+    <TodosContextProvider>
+      <NewTodo />
+      <Todos />
+    </TodosContextProvider>
   );
 }
 
